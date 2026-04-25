@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+	<meta name="theme-color" content="#0e146b" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<title>Web Quiz Application</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="styles.css?v=orange" />
+</head>
+<body style="background:#011022;">
+	<header class="app-header">
+		<div class="container header-inner">
+			<h1 class="app-title">Web Quiz Application</h1>
+			<nav class="app-nav" aria-label="Quiz navigation">
+				<button id="btn-home" class="link-button" type="button">Home</button>
+				<button id="btn-settings" class="link-button" type="button" aria-expanded="false" aria-controls="settings-panel">Settings</button>
+				<button id="btn-logout" class="link-button" type="button">Logout</button>
+			</nav>
+		</div>
+	</header>
+
+	<main id="main" class="container">
+		<section id="screen-home" class="screen" aria-labelledby="home-title">
+			<div class="card">
+				<h2 id="home-title">Ready to test your knowledge?</h2>
+				<p>Choose your preferences and start the quiz. You can review your answers at the end.</p>
+				<div class="home-controls">
+					<div class="control">
+						<label for="select-category">Category</label>
+						<select id="select-category">
+							<option value="any">Any</option>
+							<option value="general">General Knowledge</option>
+							<option value="science">Science</option>
+							<option value="tech">Technology</option>
+							<option value="programming">Programming</option>
+						</select>
+					</div>
+					<div class="control">
+						<label for="select-difficulty">Difficulty</label>
+						<select id="select-difficulty">
+							<option value="any">Any</option>
+							<option value="easy">Easy</option>
+							<option value="medium">Medium</option>
+							<option value="hard">Hard</option>
+						</select>
+					</div>
+					<div class="control">
+						<label for="input-num-questions">Number of Questions</label>
+						<input id="input-num-questions" type="number" min="3" max="20" step="1" value="10" />
+					</div>
+					<div class="control">
+						<label for="input-time-limit">Time Limit (minutes, 0 = none)</label>
+						<input id="input-time-limit" type="number" min="0" max="60" step="1" value="0" />
+					</div>
+				</div>
+				<div class="actions">
+					<button id="btn-start" class="primary" type="button">Start Quiz</button>
+				</div>
+			</div>
+		</section>
+
+		<section id="screen-quiz" class="screen hidden" aria-labelledby="quiz-title">
+			<div class="quiz-header">
+				<h2 id="quiz-title">Quiz In Progress</h2>
+				<div class="quiz-status">
+					<div id="progress" class="badge" aria-live="polite">Q 1/10</div>
+					<div id="timer" class="badge" aria-live="polite">--:--</div>
+				</div>
+			</div>
+			<div class="card">
+				<div id="question-text" class="question-text"></div>
+				<ol id="answers" class="answers" role="listbox" aria-label="Answer choices"></ol>
+				<div class="actions spaced">
+					<button id="btn-prev" type="button" class="ghost">Previous</button>
+					<button id="btn-flag" type="button" class="ghost" aria-pressed="false">Flag</button>
+					<button id="btn-next" type="button" class="primary">Next</button>
+					<button id="btn-submit" type="button" class="danger hidden">Submit</button>
+				</div>
+			</div>
+		</section>
+
+		<section id="screen-results" class="screen hidden" aria-labelledby="results-title">
+			<div class="card">
+				<h2 id="results-title">Results</h2>
+				<p id="results-summary"></p>
+				<div class="actions spaced">
+					<button id="btn-review" type="button" class="ghost">Review Answers</button>
+					<button id="btn-retry" type="button" class="primary">Try Again</button>
+				</div>
+			</div>
+			<div id="review-list" class="review-list hidden" aria-live="polite"></div>
+		</section>
+
+
+	</main>
+
+	<section id="settings-panel" class="settings-panel hidden" aria-label="Settings">
+		<div class="container">
+			<div class="card">
+				<h3>Settings</h3>
+				<div class="settings-grid">
+					<label class="switch">
+						<input id="setting-shuffle" type="checkbox" />
+						<span>Shuffle questions</span>
+					</label>
+					<label class="switch">
+						<input id="setting-audio" type="checkbox" />
+						<span>Enable sounds</span>
+					</label>
+					<label class="switch">
+						<input id="setting-contrast" type="checkbox" />
+						<span>High contrast mode</span>
+					</label>
+				</div>
+				<div class="actions">
+					<button id="btn-close-settings" type="button" class="primary">Close</button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer class="app-footer">
+		<div class="container">
+			<p>© <span id="year"></span> Web Quiz Application</p>
+		</div>
+	</footer>
+
+	<script src="questions.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>
+
+

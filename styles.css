@@ -1,0 +1,269 @@
+:root {
+	--bg: #0f172a;
+	--panel: #111827;
+	--card: #0b1220;
+	--text: #e5e7eb;
+	--muted: #9ca3af;
+	--brand: #6366f1;
+	--brand-600: #5457ee;
+	--danger: #ef4444;
+	--success: #22c55e;
+	--badge: #1f2937;
+	--border: #1f2937;
+	--focus: #f59e0b;
+}
+
+.high-contrast {
+	--bg: #000;
+	--panel: #000;
+	--card: #000;
+	--text: #fff;
+	--muted: #ccc;
+	--brand: #0ff;
+	--brand-600: #0cc;
+	--danger: #f33;
+	--success: #6f6;
+	--badge: #111;
+	--border: #555;
+	--focus: #ff0;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+	margin: 0;
+	font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+	background: linear-gradient(180deg, var(--bg), #0b1022);
+	color: var(--text);
+}
+
+.container {
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 0 16px;
+}
+
+.app-header {
+	position: sticky;
+	top: 0;
+	background: rgba(17, 24, 39, 0.7);
+	backdrop-filter: blur(10px);
+	border-bottom: 1px solid var(--border);
+	z-index: 10;
+}
+.header-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 14px 0;
+}
+.app-title { margin: 0; font-size: 20px; letter-spacing: 0.3px; }
+.app-nav { display: flex; gap: 8px; }
+
+.app-footer {
+	border-top: 1px solid var(--border);
+	margin-top: 48px;
+	padding: 16px 0 40px;
+	color: var(--muted);
+	font-size: 14px;
+}
+
+.screen { padding: 24px 0; }
+.hidden { display: none !important; }
+
+.card {
+	background: radial-gradient(1200px 300px at 50% -20%, rgba(99, 102, 241, 0.08), transparent 40%),
+		linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+	border: 1px solid var(--border);
+	border-radius: 14px;
+	padding: 20px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.home-controls {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+	margin-top: 14px;
+}
+.login-form {
+	display: grid;
+	gap: 12px;
+	margin-top: 14px;
+}
+.control {
+	display: grid;
+	gap: 6px;
+}
+label { color: var(--muted); font-size: 14px; }
+select, input[type="number"] {
+	background: var(--card);
+	color: var(--text);
+	border: 1px solid var(--border);
+	border-radius: 10px;
+	padding: 10px 12px;
+	outline: none;
+}
+select:focus, input[type="number"]:focus, button:focus-visible {
+	box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.45);
+	border-color: var(--focus);
+}
+
+.actions { margin-top: 16px; display: flex; gap: 10px; }
+.actions.spaced { justify-content: space-between; }
+
+button {
+	background: var(--badge);
+	color: var(--text);
+	border: 1px solid var(--border);
+	border-radius: 10px;
+	padding: 10px 14px;
+	cursor: pointer;
+	transition: transform 0.06s ease, background 0.2s ease, border-color 0.2s ease;
+}
+button:hover { transform: translateY(-1px); border-color: #374151; }
+button.primary { background: var(--brand); border-color: var(--brand-600); }
+button.primary:hover { background: var(--brand-600); }
+button.danger { background: var(--danger); border-color: #b91c1c; }
+button.ghost { background: transparent; }
+.link-button {
+	background: transparent;
+	border: none;
+	padding: 8px 10px;
+	color: var(--text);
+}
+.link-button:hover { text-decoration: underline; }
+
+.quiz-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 12px;
+}
+.quiz-status { display: flex; gap: 8px; }
+.badge {
+	background: var(--badge);
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	padding: 6px 10px;
+	font-size: 14px;
+	color: var(--muted);
+}
+
+.question-text {
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 14px;
+}
+.answers {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: 10px;
+}
+.answer {
+	display: flex;
+	gap: 10px;
+	align-items: start;
+	background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	padding: 12px;
+	cursor: pointer;
+}
+.answer[aria-selected="true"] {
+	outline: 2px solid var(--brand);
+	border-color: var(--brand-600);
+}
+.answer.correct { border-color: rgba(34, 197, 94, 0.6); background: rgba(34, 197, 94, 0.08); }
+.answer.incorrect { border-color: rgba(239, 68, 68, 0.6); background: rgba(239, 68, 68, 0.08); }
+.answer input {
+	margin-top: 2px;
+}
+.answer .text { flex: 1; }
+
+.settings-panel {
+	position: fixed;
+	inset: 64px 0 0 0;
+	background: rgba(0,0,0,0.4);
+	backdrop-filter: blur(4px);
+}
+.settings-panel .card { max-width: 640px; margin: 24px auto; }
+.settings-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin-top: 10px; }
+.switch { display: flex; gap: 8px; align-items: center; }
+
+.review-list { margin-top: 16px; display: grid; gap: 10px; }
+.review-item {
+	border: 1px solid var(--border);
+	border-radius: 10px;
+	padding: 12px;
+}
+.review-item .meta { color: var(--muted); font-size: 13px; margin-top: 6px; }
+.flagged { color: #e2792a; }
+
+@media (max-width: 720px) {
+	.home-controls { grid-template-columns: 1fr; }
+	.quiz-header { flex-direction: column; align-items: start; gap: 8px; }
+	.dashboard-stats { grid-template-columns: 1fr; }
+}
+
+/* Dashboard styles */
+.dashboard-stats {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+	margin-top: 14px;
+}
+
+.stat {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.stat label {
+	font-size: 14px;
+	color: var(--muted);
+	font-weight: 600;
+}
+
+.stat span {
+	font-size: 18px;
+	font-weight: 700;
+	color: var(--text);
+}
+
+.progress-bar {
+	width: 100%;
+	height: 8px;
+	background: var(--border);
+	border-radius: 4px;
+	overflow: hidden;
+	margin-top: 4px;
+}
+
+.progress-fill {
+	height: 100%;
+	background: linear-gradient(90deg, var(--brand), var(--success));
+	border-radius: 4px;
+	transition: width 0.3s ease;
+}
+
+.score-trend {
+	display: flex;
+	gap: 4px;
+	align-items: end;
+	height: 60px;
+	margin-top: 14px;
+}
+
+.trend-bar {
+	flex: 1;
+	background: var(--border);
+	border-radius: 2px 2px 0 0;
+	min-height: 4px;
+	transition: height 0.3s ease, background 0.3s ease;
+}
+
+

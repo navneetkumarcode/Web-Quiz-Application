@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Web Quiz Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="background:#011022;">
+    <main class="container">
+        <section class="screen">
+            <div class="card">
+                <h2>Login to Web Quiz Application</h2>
+                <form id="login-form" class="login-form">
+                    <div class="control">
+                        <label for="username">Username or Email</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="control">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="primary">Login</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            // Store username in localStorage
+            localStorage.setItem('username', username);
+            // Simple login logic - in a real app, validate credentials
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
